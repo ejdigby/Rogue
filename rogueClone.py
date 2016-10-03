@@ -214,7 +214,7 @@ class Creature():
 
         # Change to involve other special spaces
         if newPositionObject == "?":
-            self.health = 20
+            self.health += 20
             board = setObjectPosition(board," ",newPosition,newPosition)
 
         # CHANGE to involve all the creature classes
