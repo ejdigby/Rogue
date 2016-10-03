@@ -158,6 +158,8 @@ class Creature():
             board = self.moveCreature(board,self.movements[keys.index(action)])
         elif action == 'i':
             self.useItem()
+        elif action == "yea boiiiiiii":
+            self.inventory.weapon = wSmax
         return board
 
     # The function that returns which direction the creature willtravel in
@@ -237,7 +239,7 @@ class Creature():
 
     
 ## THESE GLOBAL VARIABLE DECIDE THE MONSTER AND PLAYER CREATURES
-player = Creature("O",True,200,1,25,[[0,-1],[-1,0],[0,1],[1,0]],Inventory(wNone,aNone,iHealth1))
+player = Creature("O",True,200,1,25,[[0,-1],[-1,0],[0,1],[1,0]],Inventory(wWood,aWood,iHealth1))
 A = Creature("A",False,100,1,10,[[0,-1],[-1,0],[0,1],[1,0]],Inventory(random.choice(wR),random.choice(aR),random.choice(iR)))
 B = Creature("B",False,120,1,10,[[0,-1],[-1,0],[0,1],[1,0]],Inventory(random.choice(wR),random.choice(aR),random.choice(iR)))
 C = Creature("C",False,140,1,10,[[0,-1],[-1,0],[0,1],[1,0]],Inventory(random.choice(wR),random.choice(aR),random.choice(iR)))
