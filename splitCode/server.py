@@ -1,4 +1,5 @@
 import random
+import threading
 
 # // CLASSES // #
 
@@ -252,6 +253,14 @@ def mainLoop():
 
         print('\n'*100)
 
+    # PUT INTO MAINLOOP
+    threads = []
+    for p in playerWorkers:
+        t = threading.Thread(target = worker)
+        threads.append(t)
+        t.start()
+
+
 # Network functions:
 
 # // VARIABLES // #
@@ -297,6 +306,12 @@ creatureObjects = []
 
 for c in creatures:
     creatureObjects.append(c.object)
+
+# Create individual threads for players
+def worker():
+    # do stuff on a thread
+
+
 
 
 mainloop()
