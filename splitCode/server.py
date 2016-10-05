@@ -244,6 +244,14 @@ def fightMonster(board,monster,creature):
 
     return board
 
+#Creates a weighted list ya twonk
+def createWeightedList(list):
+    weightedList = []
+    for item in list:
+        for x in range(0,item[3]):
+            weightedList.append(item)
+    return weightedList
+
 # Runs the game, MIGHT NEED REWORKING *SLIGHTLY*
 def mainLoop():
     while player.health > 0:
