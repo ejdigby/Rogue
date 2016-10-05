@@ -1,5 +1,6 @@
 import random
 import threading
+import os
 
 # // CLASSES // #
 
@@ -273,6 +274,10 @@ def mainLoop():
 
 # // VARIABLES // #
 
+# thread boilerplate
+#we can probably turn playerWorkers into a structure containing the player objects? Then pass that into the thread on L267
+playerWorkers = 1
+
 # boards
 vBoard,aBoard = getMap("layout.txt")
 
@@ -294,7 +299,7 @@ iNone = Item(0,1,1,"None","No items",0,20)
 iHealth1 = Item(20,1,1,"Small Health Potion","Heals 20 health",1,5)
 iHealth2 = Item(50,1,1,"Health Potion","Heals 50 health",1,1)
 iCharm1 = Item(0,2,0.8,"Thing","Ups dmg, lowers armour",5,2)
-
+#creates the weighted lists using my totally orginal function
 wR = createWeightedList([wNone,wWood,wStone,wIron,wSteel,wSmax])
 aR = createWeightedList([aNone,aWood,aLeather,aIron,aSteel])
 iR = createWeightedList([iNone,iHealth1,iHealth2,iCharm1])
@@ -318,8 +323,8 @@ for c in creatures:
 # Create individual threads for players
 def worker():
     # do stuff on a thread
-
-
+    print("Multi-threaded printing lads")
+    return
 
 
 mainloop()
