@@ -1,4 +1,5 @@
 import os
+#can we please figure out what this actually does? or at least someone tell me since idk
 os.environ['LINES'] = '40'
 os.environ['COLUMNS']= '80'
 
@@ -21,10 +22,10 @@ def playerTurn(self,board):
     keys = ['w','a','s','d']
 
     if action in keys:
-        #
+        #movement
     elif action == 'i':
-        #
+        #item
     elif action == "yea boiiiiiii":
-        #
+        #holla at ya boi
 
 ## NETWORKING FUNCTIONS
