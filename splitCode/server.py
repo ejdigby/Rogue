@@ -60,6 +60,10 @@ class Inventory():
                     self.item = otherInv.item
 
 # CREATURE CLASS
+
+# // WILL NEED WORK CHANGING THE MOVEMENT FUNCTIONS // #
+# p.s. Harambe was just a gorilla
+
 # The creature class will contain the variables required for both monsters and the player
 class Creature():
     # object : character - the character that represents the creature on the board
