@@ -1,9 +1,5 @@
-# Rogue
+# I am Groot
 
+I am Groot. I am Groot, I am Groot - Groot, I am. 
 
-A multiplayer ascii dungeon game
-
-
-![PHOTOS N STUFF](https://raw.githubusercontent.com/wiki/mozilla/thimble.webmaker.org/tutorial.gif)
-
-yeaahhhhhhhh booiiiiiiiiiissss
+![I am Groot](https://media0.giphy.com/media/o4bcMIi9Z7RG8/200_s.gif)
