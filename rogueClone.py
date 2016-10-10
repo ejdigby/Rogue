@@ -114,10 +114,15 @@ class Inventory():
                 self.armour = otherInv.armour
 
             if otherInv.item != iNone:
-                print("You can take the item : " + otherInv.item.name)
-                take = input("Do you want to take this item? [y/n]: ").lower()
-                if take == "y":
-                    self.item = otherInv.item
+                take = False
+                while take == False:
+                    print("You can take the item : " + otherInv.item.name)
+                    take = input("Do you want to take this item? [y/n]: ").lower()
+                    if take == "y":
+                        self.item = otherInv.item
+                    elif take != "n":
+                        take = False
+                        print("That was invalid input, please pick again")
 
 # The creature class will contain the variables required for both monsters and the player
 class Creature():
@@ -150,7 +155,10 @@ class Creature():
 
     def playerTurn(self,board):
         #This function decides on players actions - you could potentially add more actions in here
-        action = input('What do you want to do: ')
+        allActions = ['w','a','s','d','i',"yea boiiiiiii"]
+        action = 0
+        while action not in allActions:
+            action = input('What do you want to do: ')
 
         keys = ['w','a','s','d']
 
