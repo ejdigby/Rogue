@@ -1,7 +1,19 @@
+# DOING OBJECTS WITHIN OBJECTS
+# RECEIVING OBJECT THAT CONTAINS:
+# map
+# creature health
+# player inventory
+
 import os
 #can we please figure out what this actually does? or at least someone tell me since idk
 os.environ['LINES'] = '40'
 os.environ['COLUMNS']= '80'
+
+## CLASSES
+class sendObject():
+    # keystrokes
+    def __init__(keystroke):
+        self.keystroke = keystroke
 
 #This function prints the board - do not change it
 def printBoard(board):
@@ -29,3 +41,11 @@ def playerTurn(self,board):
         #holla at ya boi
 
 ## NETWORKING FUNCTIONS
+# sending strings
+def sendStuff():
+    
+
+# receive a dictionary of strings and/or integers
+def receiveStuff():
+    
+    
