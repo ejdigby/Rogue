@@ -43,10 +43,10 @@ def iSend(conn,msg):
     conn.sendall(msg)
     print("Sent->  ", msg)
 
-
 thrd = client(soc2)
 thrd.start()
-
+#data is the data to be sent
+iSend(soc1, pickle.dumps(data))
 
 #can we please figure out what this actually does? or at least someone tell me since idk
 os.environ['LINES'] = '40'
