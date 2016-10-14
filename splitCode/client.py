@@ -19,7 +19,7 @@ class client(threading.Thread):
 
     def run(self):
         while self.RunningState:
-            msg = self.iRecieve()
+            msg = self.iReceive()
             print('Receive-> ',msg.decode())
 
 
