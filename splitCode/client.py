@@ -13,14 +13,14 @@ class client(threading.Thread):
         self.soc = soc
         self.RunningState = True
 
-    def iRecieve(self):
+    def iReceive(self):
         data = self.soc.recv(SIZE)
         return data
 
     def run(self):
         while self.RunningState:
             msg = self.iRecieve()
-            print('Recieved-> ',msg.decode())
+            print('Receive-> ',msg.decode())
 
 
 
