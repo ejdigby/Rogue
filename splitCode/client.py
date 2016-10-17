@@ -7,11 +7,10 @@
 import os
 from socket import *
 import threading
-from Robot import Robot
 import pickle
 from io import BytesIO
 
-SIZE =1024
+SIZE = 1024
 
 class client(threading.Thread):
     def __init__(self,soc):
@@ -30,7 +29,8 @@ class client(threading.Thread):
 
 
 
-
+# SOCKET 1 FOR SENDING
+# SOCKET 2 FOR RECEIVING
 soc1 = socket(AF_INET,SOCK_STREAM)
 soc1.connect(('127.0.0.1',5432))
 soc1.send('SEND'.encode()) # telling server we will send data from here
@@ -46,7 +46,9 @@ def iSend(conn,msg):
 thrd = client(soc2)
 thrd.start()
 #data is the data to be sent
-iSend(soc1, pickle.dumps(data))
+iSend(soc1, pickle.dumps("yeeeaaaaq booooiiiiii"))
+
+
 
 #can we please figure out what this actually does? or at least someone tell me since idk
 os.environ['LINES'] = '40'
@@ -75,20 +77,13 @@ def playerTurn(self,board):
     action = input('What do you want to do: ')
 
     keys = ['w','a','s','d']
-
+    '''
     if action in keys:
         #movement
     elif action == 'i':
         #item
     elif action == "yea boiiiiiii":
         #holla at ya boi
-
-## NETWORKING FUNCTIONS
-# sending strings
-def sendStuff():
-    
-
-# receive a dictionary of strings and/or integers
-def receiveStuff():
+'''
     
     

@@ -27,7 +27,7 @@ class RecThread(threading.Thread):
         while self.RunningState:
             msg = self.iRecieve()
             robo = pickle.loads(msg)
-            print ('Recieved->  ')
+            print ('Recieved->  ' + str(robo))
 
 def setupConn(con1,con2):
     connTypes={}

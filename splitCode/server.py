@@ -1,6 +1,50 @@
+# SERVER
 import random
 import threading
 import os
+from socket import *
+import pickle
+from io import BytesIO
+
+SIZE = 1024
+
+class client(threading.Thread):
+    def __init__(self,soc):
+        threading.Thread.__init__(self)
+        self.soc = soc
+        self.RunningState = True
+
+    def iReceive(self):
+        data = self.soc.recv(SIZE)
+        return data
+
+    def run(self):
+        while self.RunningState:
+            msg = self.iReceive()
+            print('Receive-> ',msg.decode())
+
+
+# First number designates which player the socket corresponds to
+# SOCKET 1 FOR SENDING
+# SOCKET 2 FOR RECEIVING
+soc1_1 = socket(AF_INET,SOCK_STREAM)
+soc1_1.connect(('127.0.0.1',5432))
+soc1_1.send('SEND'.encode()) # telling server we will send data from here
+
+soc1_2 = socket(AF_INET,SOCK_STREAM)
+soc1_2.connect(('127.0.0.1',5432))
+soc1_2.send('RECV'.encode()) # telling server we will recieve data from here
+
+def iSend(conn,msg):
+    conn.sendall(msg)
+    print("Sent->  ", msg)
+
+thrd = client(soc1_2)
+thrd.start()
+#data is the data to be sent
+iSend(soc1_1, pickle.dumps(data))
+
+
 
 # // CLASSES // #
 
