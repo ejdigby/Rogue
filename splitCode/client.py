@@ -1,3 +1,4 @@
+import * from rogueClasses.py
 # DOING OBJECTS WITHIN OBJECTS
 # RECEIVING OBJECT THAT CONTAINS:
 # map
@@ -28,6 +29,15 @@ class client(threading.Thread):
             print('Receive-> ',msg.decode())
 
 
+# TEST DICTIONARY
+class AbsoluteG():
+    def __init__(self):
+        self.a = "aaaaaa"
+        self.ga = "gaaaaaa"
+        self.r = "rerererererepiratererere"
+
+g = AbsoluteG()
+data = g
 
 # SOCKET 1 FOR SENDING
 # SOCKET 2 FOR RECEIVING
@@ -46,7 +56,7 @@ def iSend(conn,msg):
 thrd = client(soc2)
 thrd.start()
 #data is the data to be sent
-iSend(soc1, pickle.dumps("yeeeaaaaq booooiiiiii"))
+iSend(soc1, pickle.dumps(data))
 
 
 
