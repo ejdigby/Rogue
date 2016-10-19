@@ -1,11 +1,17 @@
+import * from rogueClasses.py
+# DOING OBJECTS WITHIN OBJECTS
+# RECEIVING OBJECT THAT CONTAINS:
+# map
+# creature health
+# player inventory
+
 import os
 from socket import *
 import threading
-from Robot import Robot
 import pickle
 from io import BytesIO
 
-SIZE =1024
+SIZE = 1024
 
 class client(threading.Thread):
     def __init__(self,soc):
@@ -23,8 +29,18 @@ class client(threading.Thread):
             print('Receive-> ',msg.decode())
 
 
+# TEST DICTIONARY
+class AbsoluteG():
+    def __init__(self):
+        self.a = "aaaaaa"
+        self.ga = "gaaaaaa"
+        self.r = "rerererererepiratererere"
 
+g = AbsoluteG()
+data = g
 
+# SOCKET 1 FOR SENDING
+# SOCKET 2 FOR RECEIVING
 soc1 = socket(AF_INET,SOCK_STREAM)
 soc1.connect(('127.0.0.1',5432))
 soc1.send('SEND'.encode()) # telling server we will send data from here
@@ -37,14 +53,22 @@ def iSend(conn,msg):
     conn.sendall(msg)
     print("Sent->  ", msg)
 
-
 thrd = client(soc2)
 thrd.start()
+#data is the data to be sent
+iSend(soc1, pickle.dumps(data))
+
 
 
 #can we please figure out what this actually does? or at least someone tell me since idk
 os.environ['LINES'] = '40'
 os.environ['COLUMNS']= '80'
+
+## CLASSES
+class sendObject():
+    # keystrokes
+    def __init__(keystroke):
+        self.keystroke = keystroke
 
 #This function prints the board - do not change it
 def printBoard(board):
@@ -63,12 +87,13 @@ def playerTurn(self,board):
     action = input('What do you want to do: ')
 
     keys = ['w','a','s','d']
-
+    '''
     if action in keys:
         #movement
     elif action == 'i':
         #item
     elif action == "yea boiiiiiii":
         #holla at ya boi
-
-## NETWORKING FUNCTIONS
+'''
+    
+    

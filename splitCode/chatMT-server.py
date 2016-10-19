@@ -7,6 +7,13 @@ from io import BytesIO
 #TODO: needs to test the buffer size.
 # If too large, a loop may needed to read all buffer content
 
+# TEST DICTIONARY
+class AbsoluteG():
+    def __init__(self):
+        self.a = "aaaaaa"
+        self.ga = "gaaaaaa"
+        self.r = "rerererererepiratererere"
+
 SIZE = 1024
 
 soc = socket(AF_INET,SOCK_STREAM)
