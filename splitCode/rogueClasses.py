@@ -5,6 +5,8 @@ from socket import *
 import pickle
 from io import BytesIO
 
+SIZE = 1024
+
 # ALL THE CLASSES
 # TEST CLASS
 class AbsoluteG():

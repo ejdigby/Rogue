@@ -1,4 +1,4 @@
-import * from rogueClasses.py
+from rogueClasses import *
 # DOING OBJECTS WITHIN OBJECTS
 # RECEIVING OBJECT THAT CONTAINS:
 # map
@@ -8,33 +8,20 @@ import * from rogueClasses.py
 import os
 from socket import *
 import threading
+'''
+TO SERVER:
+- keystroke
+TO CLIENT:
+- player creature object
+- map
+- global messages
+'''
+
+
 import pickle
 from io import BytesIO
 
-SIZE = 1024
-
-class client(threading.Thread):
-    def __init__(self,soc):
-        threading.Thread.__init__(self)
-        self.soc = soc
-        self.RunningState = True
-
-    def iReceive(self):
-        data = self.soc.recv(SIZE)
-        return data
-
-    def run(self):
-        while self.RunningState:
-            msg = self.iReceive()
-            print('Receive-> ',msg.decode())
-
-
-# TEST DICTIONARY
-class AbsoluteG():
-    def __init__(self):
-        self.a = "aaaaaa"
-        self.ga = "gaaaaaa"
-        self.r = "rerererererepiratererere"
+#SIZE = 1024
 
 g = AbsoluteG()
 data = g
@@ -57,18 +44,6 @@ thrd = client(soc2)
 thrd.start()
 #data is the data to be sent
 iSend(soc1, pickle.dumps(data))
-
-
-
-#can we please figure out what this actually does? or at least someone tell me since idk
-os.environ['LINES'] = '40'
-os.environ['COLUMNS']= '80'
-
-## CLASSES
-class sendObject():
-    # keystrokes
-    def __init__(keystroke):
-        self.keystroke = keystroke
 
 #This function prints the board - do not change it
 def printBoard(board):
