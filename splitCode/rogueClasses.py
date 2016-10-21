@@ -214,3 +214,82 @@ class Creature():
             if self.inventory.item.uses == 0:
                 self.inventory.item = iNone
 
+# // FUNCTIONS REQUIRED BY THE CLASSES // #
+
+# Finds specific objects on the board
+def getObjectPosition(board,object):
+    for y,row in enumerate(board):
+        for x, thing in enumerate(row):
+            if thing == object:
+                position = [x,y]
+    return position
+
+#sets a new position for an object
+def setObjectPosition(board,object,newPosition,oldPosition):
+    board[oldPosition[1]][oldPosition[0]] = ' '
+    board[newPosition[1]][newPosition[0]] = object
+    return board
+
+# checks what is in a square
+def checkSquare(board,newPosition):
+    square = board[newPosition[1]][newPosition[0]]
+    return(square)
+
+# NEEDS CHANGING TO ACCOMODATE PLAYER LOOTING ITEMS 'N ALL
+# finish this function so the hero "O" can fight the monsters
+def fightMonster(board,monster,creature):
+    monster.health -= (creature.damage*creature.inventory.weapon.damage) / (monster.damageReductor * monster.inventory.armour.reduction)
+    if monster.health <= 0:
+        board = setObjectPosition(board," ",getObjectPosition(board,monster.object),getObjectPosition(board,monster.object))
+        creature.inventory.swapItems(monster.inventory,creature)
+
+    return board
+
+# creates the item lists
+def createWeightedList(items):
+    itemList = []
+    for i in items:
+        for x in range(i.rarity):
+            itemList.append(i)
+
+    return itemList
+
+## VARIABLES ##
+# item lists
+wNone = Weapon(1,"None","No weapon",24)
+wWood = Weapon(1.5,"Wooden Sword","Wooden",45)
+wStone = Weapon(2,"Stone Sword","Meh",30)
+wIron = Weapon(3,"Iron Sword","Decent",15)
+wSteel = Weapon(4,"Steel Sword","Good",9)
+wSmax = Weapon(10,"Fists of Smaximus","Ouch",1)
+
+aNone = Armour(1,"None","No armour",8)
+aWood = Armour(2,"Wooden Armour","Wooden",15)
+aLeather = Armour(3,"Leather Armour","Meh",10)
+aIron = Armour(5,"Iron Armour","Good",5)
+aSteel = Armour(6,"Steel Armour","Slightly worn",2)
+
+iNone = Item(0,1,1,"None","No items",0,20)
+iHealth1 = Item(20,1,1,"Small Health Potion","Heals 20 health",1,5)
+iHealth2 = Item(50,1,1,"Health Potion","Heals 50 health",1,1)
+iCharm1 = Item(0,2,0.8,"Thing","Ups dmg, lowers armour",5,2)
+#creates the weighted lists using my totally orginal function
+wR = createWeightedList([wNone,wWood,wStone,wIron,wSteel,wSmax])
+aR = createWeightedList([aNone,aWood,aLeather,aIron,aSteel])
+iR = createWeightedList([iNone,iHealth1,iHealth2,iCharm1])
+
+# creatures
+## THESE GLOBAL VARIABLE DECIDE THE MONSTER AND PLAYER CREATURES
+player = Creature("O",True,200,1,25,[[0,-1],[-1,0],[0,1],[1,0]],Inventory(wWood,aWood,iHealth1))
+A = Creature("A",False,100,1,10,[[0,-1],[-1,0],[0,1],[1,0]],Inventory(random.choice(wR),random.choice(aR),random.choice(iR)))
+B = Creature("B",False,120,1,10,[[0,-1],[-1,0],[0,1],[1,0]],Inventory(random.choice(wR),random.choice(aR),random.choice(iR)))
+C = Creature("C",False,140,1,10,[[0,-1],[-1,0],[0,1],[1,0]],Inventory(random.choice(wR),random.choice(aR),random.choice(iR)))
+D = Creature("D",False,160,1,10,[[0,-1],[-1,0],[0,1],[1,0]],Inventory(random.choice(wR),random.choice(aR),random.choice(iR)))
+E = Creature("E",False,180,1,10,[[0,-1],[-1,0],[0,1],[1,0]],Inventory(random.choice(wR),random.choice(aR),random.choice(iR)))
+F = Creature("F",False,200,1,10,[[0,-1],[-1,0],[0,1],[1,0]],Inventory(random.choice(wR),random.choice(aR),random.choice(iR)))
+creatures = [player,A,B,C,D,E,F]
+
+creatureObjects = []
+
+for c in creatures:
+    creatureObjects.append(c.object)
